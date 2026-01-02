@@ -13,7 +13,7 @@ class SearchRepository{
         switch($dto->type)
         {
             case "user" :
-                $excludedRoles=Role::whereNotIn("name",["writer","reader"])->pluck("id");
+                $excludedRoles=Role::whereNotIn("name",["writer","reader"])->pluck("id")->toArray();
 
                 return User::whereDoesntHave("roles",function($query) use ($excludedRoles){
                     $query->whereIn("role_id",$excludedRoles);

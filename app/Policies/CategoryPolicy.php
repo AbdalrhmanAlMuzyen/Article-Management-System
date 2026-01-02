@@ -9,17 +9,17 @@ class CategoryPolicy
 {
     public function createCategory(User $user)
     {
-        return  $user->hasRole("admin") && $user->can("category.create");
+        return  $user->hasRole("admin");
     }
 
     public function updateCategory(User $user)
     {
-        return  $user->hasRole("admin") && $user->can("category.update");
+        return  $user->hasRole("admin") ;
     }
 
     public function deleteCategory(User $user)
     {
-        return  $user->hasRole("admin") && $user->can("category.delete");
+        return  $user->hasRole("admin") ;
     }    
     
 }

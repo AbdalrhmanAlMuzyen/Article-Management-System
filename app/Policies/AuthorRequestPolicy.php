@@ -20,12 +20,12 @@ class AuthorRequestPolicy
 
     public function viewAuthorRequests(User $user)
     {
-        return $user->hasAnyRole(["admin","editor"]) && $user->can("authorRequest.view");
+        return $user->hasAnyRole(["admin","editor"]);
     }
 
     public function handleAuthorRequest(User $user)
     {
-        return $user->hasAnyRole(["admin","editor"]) && ($user->can("authorRequest.update"));
+        return $user->hasAnyRole(["admin","editor"]);
     }
 
 }

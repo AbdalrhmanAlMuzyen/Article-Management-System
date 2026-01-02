@@ -8,22 +8,22 @@ class UserPolicy
 {
     public function viewRoles(User $user)
     {
-        return $user->hasRole("admin") && $user->can("viewRoles");
+        return $user->hasRole("admin");
     }
 
     public function viewPermissions(User $user)
     {
-        return $user->hasRole("admin")&& $user->can("viewPermissions");
+        return $user->hasRole("admin");
     }
 
     public function createUser(User $user): bool
     {
-        return  $user->hasRole("admin") && $user->can("user.create");
+        return  $user->hasRole("admin");
     }
 
     public function deleteUser(User $user)
     {
-        return $user->hasRole("admin")  && $user->can("user.delete");
+        return $user->hasRole("admin");
     }
 
     public function viewFollowerStatistics(User $user)

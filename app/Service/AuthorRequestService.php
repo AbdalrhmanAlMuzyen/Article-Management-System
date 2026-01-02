@@ -7,6 +7,7 @@ use App\DTO\AuthorRequest\HandleAuthorRequestDTO;
 use App\Repository\AuthorRequestRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\RolesAndPermissionsRepository;
+use App\Repository\RolesRepository;
 use App\Repository\UserManagementRepository;
 use App\Repository\UserRoleManagerRepository;
 use App\ReturnTrait;
@@ -21,16 +22,16 @@ class AuthorRequestService{
     protected $userManagementRepository;
     protected $notificationRepository;
     protected $notificationService;
-    protected $rolesAndPermissionsRepository;
+    protected $rolesRepository;
 
-    public function __construct(AuthorRequestRepository $authorRequestRepository, UserRoleManagerRepository $userRoleManagerRepository,UserManagementRepository $userManagementRepository,NotificationRepository $notificationRepository,NotificationService $notificationService,RolesAndPermissionsRepository $rolesAndPermissionsRepository)
+    public function __construct(AuthorRequestRepository $authorRequestRepository, UserRoleManagerRepository $userRoleManagerRepository,UserManagementRepository $userManagementRepository,NotificationRepository $notificationRepository,NotificationService $notificationService,RolesRepository $rolesRepository)
     {
         $this->authorRequestRepository=$authorRequestRepository;
         $this->userRoleManagerRepository=$userRoleManagerRepository;
         $this->userManagementRepository=$userManagementRepository;
         $this->notificationRepository=$notificationRepository;
         $this->notificationService=$notificationService;
-        $this->rolesAndPermissionsRepository=$rolesAndPermissionsRepository;
+        $this->rolesRepository=$rolesRepository;
     }
 
     public function createAuthorRequest(CreateAuthorRequestDTO $dto)
@@ -101,9 +102,6 @@ class AuthorRequestService{
                 if($dto->status==='approved')
                 {
                     $this->userRoleManagerRepository->assignRoles($user,["writer"]);
-                    $role=$this->rolesAndPermissionsRepository->findRoleByName("writer");
-                    $permissions=$this->rolesAndPermissionsRepository->getPermissions($role);
-                    $this->userRoleManagerRepository->syncPermissions($user,$permissions);
                 }
                 $this->notificationRepository->createNotification($user->id,$notificationMessage["title"],$notificationMessage["body"]);
             DB::commit();

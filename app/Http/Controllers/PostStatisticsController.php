@@ -56,6 +56,4 @@ class PostStatisticsController extends Controller
         $result = $this->postStatisticsService->getFollowersRetentionRate();
         return new ApiResponse($result["data"], $result["success"], $result["message"], $result["code"]);       
     }
-  
-
 }

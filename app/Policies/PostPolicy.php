@@ -9,37 +9,37 @@ class PostPolicy
 {
     public function createPost(User $user)
     {
-        return $user->hasRole("writer") && $user->can("post.create");
+        return $user->hasRole("writer");
     }
 
     public function viewMyPosts(User $user)
     {
-        return $user->hasRole("writer") && $user->can("post.viewMyPosts");
+        return $user->hasRole("writer");
     }
 
     public function publishRequest(User $user,Post $post)
     {
-        return $user->hasRole("writer") && $user->can("post.publishRequest") && $post->user_id === $user->id;
+        return $user->hasRole("writer") && $post->user_id === $user->id;
     }
 
     public function updatePost(User $user , Post $post)
     {
-        return $post->user_id === $user->id || ( $user->hasAnyRole(["admin","editor"]) && $user->can("post.update") );
+        return $post->user_id === $user->id || ( $user->hasAnyRole(["admin","editor"]));
     }
 
     public function deletePost(User $user,Post $post)
     {
-        return $post->user_id === $user->id || ( $user->hasAnyRole(["admin","editor"]) && $user->can("post.delete") );
+        return $post->user_id === $user->id || ( $user->hasAnyRole(["admin","editor"]));
     }
 
     public function publishPost(User $user)
     {
-        return $user->hasAnyRole(["admin","editor"]) && $user->can("post.publish");
+        return $user->hasAnyRole(["admin","editor"]);
     }
 
     public function getPendingPost(User $user)
     {
-        return $user->hasAnyRole(["admin","editor"]) && $user->can("post.viewPendingPost");
+        return $user->hasAnyRole(["admin","editor"]);
     }
 
 }

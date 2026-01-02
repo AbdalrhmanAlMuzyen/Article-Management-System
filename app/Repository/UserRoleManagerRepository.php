@@ -10,15 +10,4 @@ class UserRoleManagerRepository{
     {
         return $user->assignRole($role);
     }
-
-    public function givePermissions(User $user,$permissions)
-    {
-        return $user->givePermissionTo($permissions);
-    }
-
-    public function syncPermissions(User $user,$permissions)
-    {
-        return $user->syncPermissions($permissions);
-    }
-
 }

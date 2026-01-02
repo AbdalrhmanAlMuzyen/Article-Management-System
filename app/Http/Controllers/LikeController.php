@@ -31,6 +31,4 @@ class LikeController extends Controller
         $result=$this->likeService->getPostLikers(GetPostLikersDTO::FormRequest($request));
         return new ApiResponse($result["data"],$result["success"],$result["message"],$result["code"]);        
     }
-
-
 }

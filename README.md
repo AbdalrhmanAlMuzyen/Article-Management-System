@@ -12,7 +12,7 @@ ________________________________________________________________________________
 ## Key Features
 
 - **User Authentication:** Secure login, registration, and session management.  
-- **Role-Based Access:** Supports admins, editors, writers, and readers with tailored permissions.  
+- **Role-Based Access:** Supports admins, editors, writers, and readers. 
 - **Article Management:** Full CRUD for posts with approval workflow and publishing control.  
 - **Categories & Tags:** Organize content effectively for better navigation and discovery.  
 - **Likes & Follows:** Engage users with interactive features like liking posts and following writers.  
@@ -96,7 +96,7 @@ Administrators can retrieve all author requests from all users, making it easy t
 
 ### Handle Author Request (Approve / Reject)
 Administrators can process each request by approving or rejecting it.  
-If a request is approved, the user is automatically granted the **writer role**, along with all the permissions required for writing and managing their content.  
+If a request is approved, the user is automatically granted the **writer role**.  
 Every operation is wrapped in a secure database transaction to ensure data integrity.
 
 ### Automatic Notifications
@@ -108,7 +108,7 @@ The system generates a customized message depending on whether the request was a
 - Users cannot spam author requests thanks to the **25-day cooldown** on pending applications.  
 - Requests are processed safely with full validation and transaction support.  
 - Notification messages are dynamic and tailored to keep users informed about their status.  
-- The system ensures a smooth promotion flow from **regular user → writer** with proper role and permission assignment.
+- The system ensures a smooth promotion flow from **regular user → writer**.
 
 ________________________________________________________________________________________________________________________________
 
@@ -755,7 +755,7 @@ It allows for creating, retrieving, and deleting users, enabling administrators 
 ### Notes
 
 - Facilitates complete **user lifecycle management**: creation, retrieval, and removal.  
-- Designed for platforms with **role-based access control**, supporting different user types with varying permissions.  
+- Designed for platforms with **role-based access control**. 
 - Helps maintain a **clean and organized user base**, ensuring proper platform governance.  
 - Ideal for **multi-author content platforms, admin dashboards, or collaborative systems**.
 _________________________________________________________________________________________________________________________________

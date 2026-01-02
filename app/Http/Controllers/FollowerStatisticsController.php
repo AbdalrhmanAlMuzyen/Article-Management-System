@@ -44,7 +44,4 @@ class FollowerStatisticsController extends Controller
         $result=$this->followerStatisticsService->getMonthlyFollowersComparison();
         return new ApiResponse($result["data"],$result["success"],$result["message"],$result["code"]);          
     }
-
-
-
 }

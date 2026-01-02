@@ -49,6 +49,4 @@ class CategoryController extends Controller
         $result=$this->categoryService->getCategory();
         return new ApiResponse($result["data"],$result["success"],$result["message"],$result["code"]);        
     }
-    
-    
 }

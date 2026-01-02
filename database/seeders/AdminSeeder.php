@@ -20,8 +20,5 @@ class AdminSeeder extends Seeder
         ]);
 
         $user->assignRole("admin");
-        $admin=Role::findByName("admin");
-        $permissions=$admin->getPermissionNames();
-        $user->givePermissionTo($permissions);
     }
 }
